@@ -25,9 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'y8mtzkvgiv$a_9+*(w*59d58nfblz9l1+e9p-8qohm2v!!zg1^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['munchin7.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -71,6 +71,15 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'MunchIn.wsgi.application'
+
+SECURE_HSTS_SECONDS = 31536000
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+SECURE_SSL_REDIRECT = True
+
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+
 
 
 # Database
@@ -122,7 +131,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
