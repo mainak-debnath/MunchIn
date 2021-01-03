@@ -38,7 +38,6 @@ ALLOWED_HOSTS = ['munchin7.herokuapp.com', '127.0.0.1']
 INSTALLED_APPS = [
     'customer',
     'whitenoise.runserver_nostatic',
-    "sslserver",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
