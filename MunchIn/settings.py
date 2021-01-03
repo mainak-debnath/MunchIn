@@ -12,14 +12,10 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
-import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR,  'templates'),
-    # Add to this list all the locations containing your static files
-)
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -28,16 +24,15 @@ TEMPLATE_DIRS = (
 SECRET_KEY = 'y8mtzkvgiv$a_9+*(w*59d58nfblz9l1+e9p-8qohm2v!!zg1^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['munchin7.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = []
 
 
 # Application definition
 
 INSTALLED_APPS = [
     'customer',
-    'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -47,7 +42,6 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -57,7 +51,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 ROOT_URLCONF = 'MunchIn.urls'
 
 TEMPLATES = [
@@ -77,14 +70,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'MunchIn.wsgi.application'
-
-SECURE_HSTS_SECONDS = 31536000
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_HSTS_PRELOAD = True
-SECURE_SSL_REDIRECT = True
-
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
 
 
 # Database
@@ -136,10 +121,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
-django_heroku.settings(locals())
