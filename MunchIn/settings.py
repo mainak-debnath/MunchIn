@@ -13,14 +13,6 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 import os
 import django_heroku
-from django.core.exceptions import ImproperlyConfigured
-
-def get_env_value(env_variable):
-    try:
-      	return os.environ[env_variable]
-    except KeyError:
-        error_msg = 'Set the {} environment variable'.format(var_name)
-        raise ImproperlyConfigured(error_msg)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -33,7 +25,7 @@ TEMPLATE_DIRS = (
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = get_env_value('SECRET_KEY')
+SECRET_KEY = 'y8mtzkvgiv$a_9+*(w*59d58nfblz9l1+e9p-8qohm2v!!zg1^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
